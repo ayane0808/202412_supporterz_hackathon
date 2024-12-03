@@ -46,13 +46,84 @@ class MyAppState extends ChangeNotifier {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+// ...
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = GeneratorPage();
+        break;
+      case 1:
+        // 配置した場所に十字が入った四角形を描画して、その部分の UI が未完成であることを示す便利なウィジェット
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError("No page for index $selectedIndex");
+    }
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        // Scaffold provides the basic structure for the visual interface
+        body: Row(
+          children: [
+            // SafeArea is used to avoid the notch and other system UI elements
+            SafeArea(
+              child: NavigationRail(
+                // NavigationRail is a vertical navigation component
+                // extended true means labels are visible
+                extended: constraints.maxWidth > 600,
+                destinations: [
+                  // NavigationRailDestination defines each item in the navigation rail
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.favorite),
+                    label: Text('Favorites'),
+                  ),
+                ],
+                // The index of the selected destination
+                selectedIndex: selectedIndex,
+                // Callback when a destination is selected
+                onDestinationSelected: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+                },
+              ),
+            ),
+            // Expanded widget expands to fill the available space
+            Expanded(
+              child: Container(
+                // Container with a background color
+                color: Theme.of(context).colorScheme.primaryContainer,
+                // Display the GeneratorPage widget
+                child: page,
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+}
+
+class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     var pair = appState.current;
 
-    // add 6
     IconData icon;
     if (appState.favorites.contains(pair)) {
       icon = Icons.favorite;
@@ -60,38 +131,38 @@ class MyHomePage extends StatelessWidget {
       icon = Icons.favorite_border;
     }
 
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Text('A random AWESOME idea:'),
-            BigCard(pair: pair),
-            SizedBox(height: 16),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton.icon(
-                  label: Text("Like"),
-                  icon: Icon(icon),
-                  onPressed: () {
-                    appState.toggleFavorite();
-                  },
-                ),
-                SizedBox(width: 10),
-                ElevatedButton(
-                    onPressed: () {
-                      appState.getNext();
-                    },
-                    child: Text("Next")),
-              ],
-            )
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BigCard(pair: pair),
+          SizedBox(height: 10),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  appState.toggleFavorite();
+                },
+                icon: Icon(icon),
+                label: Text('Like'),
+              ),
+              SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () {
+                  appState.getNext();
+                },
+                child: Text('Next'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
+
+// ...
 
 class BigCard extends StatelessWidget {
   const BigCard({
