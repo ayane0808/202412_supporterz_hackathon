@@ -4,7 +4,20 @@ void main() {
   runApp(MyApp());
 }
 
-class SpotifyLoginPage extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MyHomePage(),
+    );
+  }
+}
+
+// Pages--------------------------------------------
+
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +31,7 @@ class SpotifyLoginPage extends StatelessWidget {
   }
 }
 
-class ApiDataPage extends StatelessWidget {
+class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +45,7 @@ class ApiDataPage extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,16 +59,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
-    );
-  }
-}
+// Page--------------------------------------------
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -66,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    SpotifyLoginPage(),
-    HomePage(),
-    ApiDataPage(),
+    Home(),
+    Search(),
+    Setting(),
   ];
 
   @override
@@ -84,16 +88,16 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.login),
-            label: 'Login',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.data_usage),
-            label: 'API Data',
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Setting',
           ),
         ],
       ),
