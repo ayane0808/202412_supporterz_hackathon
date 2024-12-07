@@ -98,12 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
             label: '検索',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Setting',
+            label: '設定',
           ),
         ],
       ),
