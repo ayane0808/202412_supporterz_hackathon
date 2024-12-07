@@ -9,7 +9,7 @@ class SpotifyLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Spotify Login'),
+        title: Text('Home'),
       ),
       body: Center(
         child: Text('Spotify Login Page'),
@@ -82,18 +82,20 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.login),
-            label: 'Login',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'ホーム',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.data_usage),
-            label: 'API Data',
+            icon: Icon(Icons.search),
+            label: '検索',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '設定',
           ),
         ],
       ),
