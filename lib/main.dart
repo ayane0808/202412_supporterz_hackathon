@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: '設定',
+            label: 'Setting',
           ),
         ],
       ),
