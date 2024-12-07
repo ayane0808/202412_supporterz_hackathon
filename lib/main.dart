@@ -4,6 +4,19 @@ void main() {
   runApp(MyApp());
 }
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MyHomePage(),
+    );
+  }
+}
+
+// Pages--------------------------------------------
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -46,16 +59,7 @@ class Setting extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: MyHomePage(),
-    );
-  }
-}
+// Page--------------------------------------------
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -94,8 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
             label: '検索',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: '設定',
+            label: 'Setting',
           ),
         ],
       ),
