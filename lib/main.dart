@@ -4,7 +4,7 @@ void main() {
   runApp(MyApp());
 }
 
-class SpotifyLoginPage extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,35 +12,35 @@ class SpotifyLoginPage extends StatelessWidget {
         title: Text('Home'),
       ),
       body: Center(
-        child: Text('Spotify Login Page'),
+        child: Text('グループ追加ボタン'),
       ),
     );
   }
 }
 
-class ApiDataPage extends StatelessWidget {
+class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('API Data Page'),
+        title: Text('Search'),
       ),
       body: Center(
-        child: Text('API Data Page'),
+        child: Text('Search Page'),
       ),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Setting'),
       ),
       body: Center(
-        child: Text('Home Page'),
+        child: Text('Setting Page'),
       ),
     );
   }
@@ -66,9 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    SpotifyLoginPage(),
-    HomePage(),
-    ApiDataPage(),
+    Home(),
+    Search(),
+    Setting(),
   ];
 
   @override
