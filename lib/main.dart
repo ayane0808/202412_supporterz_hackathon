@@ -4,48 +4,6 @@ void main() {
   runApp(MyApp());
 }
 
-class SpotifyLoginPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Text('Spotify Login Page'),
-      ),
-    );
-  }
-}
-
-class ApiDataPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('API Data Page'),
-      ),
-      body: Center(
-        child: Text('API Data Page'),
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: Text('Home Page'),
-      ),
-    );
-  }
-}
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,6 +15,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// Pages--------------------------------------------
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Text('グループ追加ボタン'),
+      ),
+    );
+  }
+}
+
+class Search extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Search'),
+      ),
+      body: Center(
+        child: Text('Search Page'),
+      ),
+    );
+  }
+}
+
+class Setting extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Setting'),
+      ),
+      body: Center(
+        child: Text('Setting Page'),
+      ),
+    );
+  }
+}
+
+// Page--------------------------------------------
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -66,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    SpotifyLoginPage(),
-    HomePage(),
-    ApiDataPage(),
+    Home(),
+    Search(),
+    Setting(),
   ];
 
   @override
