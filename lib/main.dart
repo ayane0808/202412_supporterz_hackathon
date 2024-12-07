@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'category.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,7 @@ class Home extends StatelessWidget {
   }
 }
 
+//曲のカテゴリ検索
 class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,29 @@ class Search extends StatelessWidget {
         title: Text('Search'),
       ),
       body: Center(
-        child: Text('Search Page'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: '知りたいカテゴリについて入力してください！',
+              ),
+              autofocus: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              child: Text('検索'),
+              onPressed: () {
+                // ボタンが押されたときの処理をここに記述
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Category()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
