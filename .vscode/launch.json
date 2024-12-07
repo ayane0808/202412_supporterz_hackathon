@@ -1,0 +1,10 @@
+{
+	"configurations": [
+		{
+			"name": "hackathon_mobileapp_202412 (Flutter)",
+			"program": "lib/main.dart",
+			"request": "launch",
+			"type": "dart"
+		}
+	]
+}
